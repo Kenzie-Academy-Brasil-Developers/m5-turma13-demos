@@ -1,0 +1,31 @@
+from users.serializers import UserSerializer
+
+caique_data = {
+    "first_name": "Caaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "last_name": "Iqueeeeeeeeeeeeeeeeeeeeeeee",
+    "email": "caiquerátops@mail.com",
+}
+caique_data
+serializer = UserSerializer(data=caique_data)
+serializer.is_valid()
+serializer.errors
+
+caique_data = {
+    "first_name": "Ca",
+    "last_name": "Ique",
+    "email": "caiqueratops@mail.com",
+    "chave_extra": "valor_extra",
+}
+caique_data
+serializer = UserSerializer(data=caique_data)
+serializer.is_valid()
+serializer.errors
+
+serializer.validated_data
+dict(serializer.validated_data)
+
+from users.models import User
+
+caique = User.objects.get(id=1)
+serializer = UserSerializer(caique)
+serializer.data
