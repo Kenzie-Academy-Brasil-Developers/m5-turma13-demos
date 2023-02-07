@@ -1,0 +1,124 @@
+from addresses.models import Address
+from users.models import User
+
+caique_data = {
+    "first_name": "Ca",
+    "last_name": "Ique",
+    "email": "caiquerátops@mail.com",
+}
+caique = User(**caique_data)
+caique.save()
+
+address_data = {"street": "Rua do Sol", "number": 777}
+address = Address(**address_data)
+address.save()
+# INTEGRITY ERROR
+
+address.user = caique
+address.user
+address.user.first_name
+# PERSISTE
+address.save()
+address
+address.user
+caique.address
+caique.address.street
+address.user_id
+
+raphael_data = {"first_name": "Ra", "last_name": "Pha", "email": "raphazilla@mail.com"}
+raphael = User.objects.create(**raphael_data)
+raphael.address = address
+address.save()
+address.user
+
+
+caique = User.objects.get(id=1)
+raphael = User.objects.get(id=2)
+caique
+caique
+from recipes.models import Recipe
+from users.models import User
+
+caique = User.objects.get(id=1)
+raphael = User.objects.get(id=2)
+caique
+raphael
+raphael.address
+raphael.address.street
+raphael.address_id
+raphael.address.id
+raphael.id
+raphael.address.user_id
+caique.recipes
+caique.recipes.all()
+recipe_data = {"name": "Bolinho da vóvó"}
+recipe = Recipe(**recipe_data)
+recipe.save()
+# INTEGRITY ERROR
+caique
+recipe
+caique.recipes = recipe
+# ATTRIBUTE ERROR
+caique.recipes
+caique.recipes.all()
+caique.recipes.add(recipe)
+recipe
+recipe.user = caique
+recipe.user
+recipe
+recipe.save()
+recipe.user
+recipe
+caique.recipes.all()
+raphael
+raphael.recipes.all()
+raphael.recipes.add(recipe)
+
+recipe_data_2 = {"name": "X-Python"}
+recipe = Recipe(**recipe_data_2)
+recipe.user = raphael
+recipe.save()
+recipe.delete()
+recipe = Recipe(**recipe_data_2)
+recipe
+recipe.user = raphael
+recipe.save()
+caique.recipes.add(recipe)
+caique.recipes.all()
+recipe.user
+recipe_data_1 = {"name": "Coxinha JS"}
+recipe_1 = Recipe.objects.create(**recipe_data_1, user=caique)
+recipe_1
+recipe_1.user
+caique.recipes.all()
+from addresses.models import Address
+
+address_1 = Address.objects.get(id=1)
+address_1.user
+address_1.user.recipes
+address_1.user.recipes.all()
+from ingredients.models import Ingredient
+from recipes.models import Recipe
+
+i1 = Ingredient(**{"name": "vóvó"})
+i1
+i1.save()
+i1
+recipe_1 = Recipe.objects.get(id=1)
+recipe_1
+i1.recipes
+i1.recipes.all()
+recipe_1.ingredients.all()
+recipe_1.ingredients.add(i1)
+i2 = Ingredient.objects.create(name="bolinho")
+recipe_1
+recipe_1.ingredients.add(i2)
+recipe_1.ingredients.all()
+i1.recipes.all()
+i2.recipes.all()
+recipe_2 = Recipe.objects.get(id=4)
+recipe_2
+i2
+i2.recipes.add(recipe_2)
+i2.recipes.all()
+recipe_2.ingredients.all()
