@@ -1,0 +1,45 @@
+from users.models import User
+from addresses.models import Address
+
+gustavo_data = {
+    "first_name": "Gu",
+    "last_name": "Stavo",
+    "email": "gustarodactilo@mail.com",
+    "favorite_season": "Verão",
+    "address": {"street": "Rua de Wano", "number": 1050},
+}
+
+gustavo = User.objects.create(**gustavo_data)
+# ValueError: Cannot assign "OrderedDict([('street', 'Rua de Wano'), ('number', 1050)])": "User.address" must be a "Address" instance.
+address_data = gustavo_data["address"]
+address1 = Address.objects.create(**address_data)
+# IntegrityError: NOT NULL constraint failed: addresses_address.user_id
+
+gustavo = User.objects.create(**gustavo_data)
+# ValueError: Cannot assign "OrderedDict([('street', 'Rua de Wano'), ('number', 1050)])": "User.address" must be a "Address" instance.
+
+address_data = gustavo_data.pop("address")
+address_data
+gustavo_data
+
+gustavo = User.objects.create(**gustavo_data)
+address1 = Address.objects.create(**address_data, user=gustavo)
+
+
+from recipes.models import Recipe
+from ingredients.models import Ingredient
+
+ingredient = Ingredient.objects.filter(name="tomate")
+ingredient
+ingredient[0]
+ingredient.first()
+
+ingredient = Ingredient.objects.filter(name="TOMATE")
+ingredient.first()
+
+ingredients_filter = Ingredient.objects.filter(name__iexact="tomate")
+ingredients_filter
+ingredients_filter.first()
+
+ingredient_filter = Ingredient.objects.filter(name__icontains="queijo")
+ingredient_filter
