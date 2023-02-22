@@ -31,9 +31,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # ipdb.set_trace()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
