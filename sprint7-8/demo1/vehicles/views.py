@@ -80,8 +80,8 @@ class VehicleCheckoutView(ParkingLotPermissionMixin, generics.UpdateAPIView):
 
 
 class VehicleView(ParkingLotPermissionMixin, generics.ListCreateAPIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated, IsAdminOrParkingLotOwner]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated, IsAdminOrParkingLotOwner]
 
     queryset = Vehicle.objects.all()
     serializer_class = VehicleSerializer
