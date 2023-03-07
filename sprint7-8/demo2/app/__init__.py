@@ -2,7 +2,7 @@ from flask import Flask
 from app import routes
 
 
-# DESIGN PATTER - Factory
+# DESIGN PATTERN - Factory
 def create_app():
     app = Flask(__name__)
 
