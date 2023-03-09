@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "demo2"
+version = "0.1.0"
+description = "Projeto em Flask"
+authors = ["Chrystian <chrystian@kenzie.com.br>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^2.2.3"
+python-dotenv = "^1.0.0"
+pymongo = "^4.3.3"
+
+
+[tool.poetry.group.dev-dependencies.dependencies]
+black = "^23.1.0"
+ipdb = "^0.13.11"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
